@@ -1,0 +1,249 @@
+/* Add Feedback Form Styles */
+
+h2 {
+  color: #1e293b;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 1.5rem 0;
+  position: relative;
+  padding-bottom: 0.75rem;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(to right, #2c4bcc, #60a5fa);
+  border-radius: 3px;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+.form {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(to right, #2c4bcc, #60a5fa);
+}
+
+.form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.text-center {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.text-center img {
+  transition: transform 0.3s ease;
+}
+
+.form:hover .text-center img {
+  transform: scale(1.05);
+}
+
+.form-control {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #1e293b;
+  background-color: #f8fafc;
+  transition: all 0.3s ease;
+  resize: vertical;
+  min-height: 150px;
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #2c4bcc;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(44, 75, 204, 0.15);
+}
+
+.form-control::-webkit-scrollbar {
+  width: 8px;
+}
+
+.form-control::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.form-control::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 4px;
+}
+
+.form-control::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  padding-left: 0.5rem;
+  position: relative;
+  display: block;
+}
+
+.error-message::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+}
+
+.mt-3 {
+  margin-top: 1.5rem;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  font-family: inherit;
+  text-align: center;
+}
+
+.btn-primary {
+  background: linear-gradient(to right, #2c4bcc, #60a5fa);
+  color: white;
+  box-shadow: 0 4px 10px rgba(44, 75, 204, 0.25);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(to right, #1e3a8a, #3b82f6);
+  box-shadow: 0 6px 15px rgba(44, 75, 204, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(44, 75, 204, 0.3);
+}
+
+.btn-primary:disabled {
+  background: linear-gradient(to right, #94a3b8, #cbd5e1);
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+/* Button Ripple Effect */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.btn-primary:active::after {
+  animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+      transform: scale(0, 0);
+      opacity: 0.5;
+  }
+  20% {
+      transform: scale(25, 25);
+      opacity: 0.3;
+  }
+  100% {
+      opacity: 0;
+      transform: scale(40, 40);
+  }
+}
+
+/* Feedback Icon Animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.text-center img {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+      padding: 1.5rem;
+  }
+  
+  .form {
+      padding: 2rem;
+  }
+  
+  h2 {
+      font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+      padding: 1rem;
+  }
+  
+  .form {
+      padding: 1.5rem;
+  }
+  
+  h2 {
+      font-size: 1.3rem;
+  }
+  
+  .btn {
+      padding: 0.75rem 1.25rem;
+  }
+}

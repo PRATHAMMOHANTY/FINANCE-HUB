@@ -1,0 +1,83 @@
+<div *ngIf="isLoggedIn()">
+  <app-managernav></app-managernav>
+  <div class="dashboard-container">
+      <div class="dashboard-header">
+          <h1>Application Requests</h1>
+          <div class="search-box">
+              <input type="text" placeholder="Search by plan name..." [(ngModel)]="searchPlanName" (input)="filterApplicationsByPlanName()">
+              <i class="fas fa-search search-icon"></i>
+          </div>
+      </div>
+
+      <div class="applications-grid">
+          <div *ngFor="let planApplication of filteredPlanApplications; let i = index" class="application-card">
+              <div class="card-header">
+                  <div class="header-info">
+                      <span class="app-number">{{ i + 1 }}</span>
+                      <div class="plan-info">
+                          <h3>{{ planApplication.SavingsPlan?.Name }}</h3>
+                          <span class="applicant-name">
+                              <i class="fas fa-user"></i> {{ planApplication.User?.Username }}
+                          </span>
+                      </div>
+                  </div>
+                  <div class="status-badge" [ngClass]="{
+                      'pending': planApplication.Status === 'Pending',
+                      'approved': planApplication.Status === 'Approved',
+                      'rejected': planApplication.Status === 'Rejected'
+                  }">{{ planApplication.Status }}</div>
+              </div>
+              <div class="card-body">
+                  <div class="info-row">
+                      <div class="info-item">
+                          <label>Applied Amount</label>
+                          <span class="amount">{{ planApplication.AppliedAmount | currency:'INR':'symbol':'1.0-0' }}</span>
+                      </div>
+                      <div class="info-item">
+                          <label>Application Date</label>
+                          <span>{{ planApplication.ApplicationDate | date:'dd-MM-yyyy' }}</span>
+                      </div>
+                  </div>
+                  <div class="info-row">
+                      <div class="info-item full-width">
+                          <label>Remarks</label>
+                          <p class="remarks">{{ planApplication.Remarks }}</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="card-footer">
+                  <button class="view-doc-btn" (click)="showPopup = true; popupImageSrc = '../../../' + planApplication.ProofDocument">
+                      <i class="fas fa-file-alt"></i> View Document
+                  </button>
+                  
+                  <div *ngIf="planApplication.Status === 'Pending'" class="action-buttons">
+                      <button class="approve-btn" (click)="approve(planApplication)">
+                          <i class="fas fa-check"></i> Approve
+                      </button>
+                      <button class="reject-btn" (click)="reject(planApplication)">
+                          <i class="fas fa-times"></i> Reject
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Empty state when no applications are found -->
+      <div *ngIf="filteredPlanApplications.length === 0" class="empty-state">
+          <i class="fas fa-inbox empty-icon"></i>
+          <h3>No Applications Found</h3>
+          <p>There are no applications matching your search criteria.</p>
+      </div>
+  </div>
+
+  <!-- Document Popup Modal -->
+  <div class="popup-overlay" *ngIf="showPopup" (click)="showPopup = false">
+      <div class="popup-content" (click)="$event.stopPropagation()">
+          <button class="close-btn" (click)="showPopup = false">&times;</button>
+          <img [src]="popupImageSrc" alt="Document Proof">
+      </div>
+  </div>
+</div>
+<div *ngIf="!isLoggedIn()">
+  <app-error></app-error>
+</div>

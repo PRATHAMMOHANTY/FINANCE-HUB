@@ -1,0 +1,57 @@
+<div *ngIf="isLoggedIn()">
+    <app-managernav></app-managernav>
+    
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Manage Savings Plans</h1>
+            <button class="add-btn" routerLink="/addsavingplan">
+                <i class="fas fa-plus"></i> Add New Plan
+            </button>
+        </div>
+        
+        <div class="data-table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>S. No</th>
+                        <th>Plan Name</th>
+                        <th>Goal Amount</th>
+                        <th>Time Frame (Years)</th>
+                        <th>Risk Level</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let savingsPlan of savingsPlans; index as i">
+                        <td>{{i + 1}}</td>
+                        <td>{{savingsPlan.Name}}</td>
+                        <td>{{savingsPlan.GoalAmount | currency:'INR':'symbol':'1.0-0'}}</td>
+                        <td>{{savingsPlan.TimeFrame}}</td>
+                        <td>
+                            <span class="risk-badge" [ngClass]="{'low-risk': savingsPlan.RiskLevel === 'Low', 'medium-risk': savingsPlan.RiskLevel === 'Medium', 'high-risk': savingsPlan.RiskLevel === 'High'}">
+                                {{savingsPlan.RiskLevel}}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="status-badge" [ngClass]="{'active': savingsPlan.Status === 'Active', 'inactive': savingsPlan.Status === 'Inactive'}">
+                                {{savingsPlan.Status}}
+                            </span>
+                        </td>
+                        <td class="action-buttons">
+                            <button class="edit-btn" (click)="updateSavingsPlan(savingsPlan.SavingsPlanId)" title="Update Savings Plan">
+                                Update
+                              </button>
+                              <button class="delete-btn" (click)="confirmDelete(savingsPlan)" title="Delete Savings Plan">
+                                Delete
+                              </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div *ngIf="!isLoggedIn()">
+    <app-error></app-error>
+</div>

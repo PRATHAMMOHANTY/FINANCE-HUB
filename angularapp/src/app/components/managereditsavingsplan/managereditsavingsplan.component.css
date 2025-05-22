@@ -1,0 +1,345 @@
+/* Edit Savings Plan Form Styles */
+
+/* Main Container & Background */
+.background-wrapper {
+    min-height: calc(100vh - 140px); /* Accounting for navbar and heading */
+    background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+.container {
+    width: 100%;
+    max-width: 650px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(to right, #2c4bcc, #60a5fa);
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* Heading Styles */
+h2 {
+    color: #1e293b;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 1.5rem 0 0.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(to right, #2c4bcc, #60a5fa);
+    border-radius: 3px;
+}
+
+/* Form Controls */
+form {
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.75rem;
+    width: 100%;
+}
+
+.form-control {
+    width: 100%;
+    padding: 15px 0;
+    border: none;
+    border-bottom: 2px solid #e2e8f0;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: none;
+    color: #1e293b;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    border-bottom-color: #2c4bcc;
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: transparent;
+}
+
+/* Floating Labels */
+.form-group label {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: #64748b;
+    font-size: 1rem;
+}
+
+.form-control:focus ~ label, 
+.form-control:not(:placeholder-shown) ~ label {
+    transform: translateY(-25px);
+    font-size: 0.85rem;
+    color: #2c4bcc;
+    font-weight: 500;
+}
+
+/* Select Styling */
+select.form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 20px;
+    padding-right: 25px;
+    cursor: pointer;
+}
+
+select.form-control:focus {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232c4bcc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+/* For selects, we need a different approach since they don't have placeholder */
+select.form-control:required:invalid {
+    color: #64748b;
+}
+
+select.form-control option[value=""][disabled] {
+    display: none;
+}
+
+select.form-control option {
+    color: #1e293b;
+}
+
+/* Number Input Styling */
+input[type="number"].form-control {
+    -moz-appearance: textfield;
+}
+
+input[type="number"].form-control::-webkit-outer-spin-button,
+input[type="number"].form-control::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Textarea Styling */
+textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+    padding: 15px 0;
+    line-height: 1.5;
+}
+
+/* Error Messages */
+.error-message {
+    color: #ef4444;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    padding-left: 0.5rem;
+    position: relative;
+}
+
+.error-message::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+}
+
+/* Button Styling */
+.btn-primary {
+    width: 100%;
+    padding: 14px 0;
+    background: linear-gradient(to right, #2c4bcc, #60a5fa);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(44, 75, 204, 0.25);
+    margin-top: 1rem;
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(to right, #1e3a8a, #3b82f6);
+    box-shadow: 0 6px 15px rgba(44, 75, 204, 0.35);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(44, 75, 204, 0.3);
+}
+
+/* Success Message Styling */
+div[class="showMessage"], /* For the earlier format */
+div[ng-if="showMessage"] { /* For the current format */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 2rem;
+    text-align: center;
+}
+
+div[ng-if="showMessage"] {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    max-width: 400px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #10b981;
+    text-align: center;
+    border-left: 4px solid #10b981;
+    margin-top: 1.5rem;
+}
+
+div[ng-if="showMessage"] button {
+    background: linear-gradient(to right, #10b981, #34d399);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-weight: 600;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+div[ng-if="showMessage"] button:hover {
+    background: linear-gradient(to right, #059669, #10b981);
+    transform: translateY(-2px);
+}
+
+/* Special Styling for Risk Levels */
+select.form-control option[value="Low"] {
+    color: #10b981;
+}
+
+select.form-control option[value="Medium"] {
+    color: #f59e0b;
+}
+
+select.form-control option[value="High"] {
+    color: #ef4444;
+}
+
+/* Button Ripple Effect */
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.btn-primary:active::after {
+    animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    20% {
+        transform: scale(25, 25);
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(40, 40);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .background-wrapper {
+        padding: 1rem;
+    }
+    
+    .container {
+        padding: 1.5rem;
+        border-radius: 10px;
+    }
+    
+    h2 {
+        font-size: 1.4rem;
+    }
+    
+    .form-control {
+        padding: 12px 0;
+    }
+    
+    .form-group label {
+        top: 12px;
+    }
+    
+    .btn-primary {
+        padding: 12px 0;
+    }
+}

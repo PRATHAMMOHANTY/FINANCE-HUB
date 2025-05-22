@@ -1,0 +1,43 @@
+<div class="dashboard-nav">
+    <div class="logo">
+        <a href="#" class="logo">
+            <span class="logo-icon">F</span>
+            Finance Hub
+        </a>
+    </div>
+    <div class="nav-links">
+        <a routerLink="/home" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <div class="nav-dropdown">
+            <a class="nav-item dropbtn">
+                <i class="fas fa-chart-line"></i>
+                <span>Savings Plans</span>
+                <i class="fas fa-chevron-down dropdown-icon"></i>
+            </a>
+            <div class="dropdown-content">
+                <a routerLink="/addsavingplan">Add Savings Plan</a>
+                <a routerLink="/viewsavingplan">View Savings Plan</a>
+            </div>
+        </div>
+        <a routerLink="/managerviewapplications" class="nav-item">
+            <i class="fas fa-file-alt"></i>
+            <span>Applications</span>
+        </a>
+        <a routerLink="/managerviewfeedbacks" class="nav-item">
+            <i class="fas fa-comments"></i>
+            <span>Feedbacks</span>
+        </a>
+    </div>
+    <div class="user-section">
+        <div class="user-info">
+            <span class="user-name">{{name}}</span>
+            <span class="user-role">Manager</span>
+        </div>
+        <button class="logout-btn" (click)="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+        </button>
+    </div>
+</div>

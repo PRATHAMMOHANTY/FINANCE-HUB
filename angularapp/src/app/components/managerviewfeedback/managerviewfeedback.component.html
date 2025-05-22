@@ -1,0 +1,32 @@
+
+<div *ngIf="isLoggedIn()">
+  <app-managernav></app-managernav>
+  <div class="container">
+    <h1>Feedback Details</h1> <!-- Moved heading outside the container -->
+    <table class="table table-striped" *ngIf="feedbacks.length > 0; else noRecordsFound">
+      <thead>
+        <tr>
+          <th class="comments">Comments</th>
+          <th>Date Provided</th>
+          <th>User Profile</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let feedback of feedbacks">
+          <td class="comments">{{ feedback.Comments }}</td>
+          <td>{{ feedback.DateProvided | date: 'dd-MM-yyyy' }}</td>
+          <td>
+            <button class="btn btn-info" (click)="showUserProfile(feedback.User)">Show Profile</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- No Records Found -->
+    <ng-template #noRecordsFound>
+      <p>Oops! No records Found</p>
+    </ng-template>
+  </div>
+</div>
+<div *ngIf="!isLoggedIn()">
+  <app-error></app-error>
+</div>

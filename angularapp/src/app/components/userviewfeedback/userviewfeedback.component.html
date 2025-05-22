@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Feedback Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div *ngIf="isLoggedIn()">
+        <app-usernav></app-usernav>
+        <h1 class="heading">My Feedback Details</h1>
+        <div class="container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Comments</th>
+                        <th>Date Provided</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let feedback of viewfeedback">
+                        <td>{{ feedback.Comments }}</td>
+                        <td>{{ feedback.DateProvided | date: 'dd-MM-yyyy' }}</td>
+                        <td>
+                            <button class="btn btn-danger" (click)="confirmDelete(feedback.FeedbackId)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Delete Confirmation Modal -->
+            <div *ngIf="delPopup" class="modal">
+                <div class="modal-content">
+                    <h3>Confirm Delete</h3>
+                    <p>Are you sure you want to delete this feedback?</p>
+                    <div class="button-container">
+                        <button class="btn btn-danger" (click)="deleteFeedback()">Delete</button>
+                        <button class="btn btn-secondary" (click)="closeDel()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!isLoggedIn()">
+        <app-error></app-error>
+    </div>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<app-managernav *ngIf="isLoggedIn() && isRegionalManager()"></app-managernav>
+<app-usernav *ngIf="isLoggedIn() && isCustomer()"></app-usernav>
+<app-navbar *ngIf="!isLoggedIn()"></app-navbar>
+<div *ngIf="!isLoggedIn()">
+</div>
+
+<body>
+    <!-- Header -->
+
+    
+    <!-- Hero Section -->
+    <section class="hero section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Smart <span>Financial Solutions</span> for Your Future</h1>
+                    <p>FinanceHub helps you manage your money with simple tools to track spending, set budgets, and make smarter financial choices.</p>
+                    
+                    <div class="hero-buttons">
+                        <a routerLink="/register" class="btn btn-primary">Get Started</a>
+                        <a href="#features" class="btn btn-secondary">Learn More</a>
+                    </div>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h4>98%</h4>
+                            <small>Customer Satisfaction</small>
+                        </div>
+                        <div class="stat-item">
+                            <h4>40K+</h4>
+                            <small>Active Users</small>
+                        </div>
+                        <div class="stat-item">
+                            <h4>$3.2M+</h4>
+                            <small>Customer Savings</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="assets/Screenshot_2025-05-02_104547-removebg-preview.png" alt="Financial Dashboard" class="heroimg">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features section" id="features">
+        <div class="container">
+            <h2 class="section-title">Designed for Individuals and Businesses</h2>
+            <p class="section-subtitle">Our platform includes smart, easy-to-use features crafted to meet the unique financial needs of both individuals and businesses.</p>
+            
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">M</div>
+                    <h3> Regional Manager </h3>
+                    <ul>
+                        <li>Secure multi-user account system with role management</li>
+                        <li>Complete financial planning with forecasting tools</li>
+                        <li>Automated review and approval workflows</li>
+                        <li>Advanced analytics dashboard with exportable reports</li>
+                        <li>Integration with popular accounting software</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">C</div>
+                    <h3> Customers </h3>
+                    <ul>
+                        <li>Simple registration and secure login process</li>
+                        <li>Personal budget planner with goal tracking</li>
+                        <li>Expense categorization and spending insights</li>
+                        <li>Bill payment reminders and scheduling</li>
+                        <li>Mobile-friendly dashboard for on-the-go management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works Section -->
+    <section class="how-it-works section" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Getting started with WealthWise is quick and easy. Follow these simple steps to begin your financial journey.</p>
+            
+            <div class="steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Create Account</h3>
+                    <p>Sign up in under a minute with just your email. No credit card required for your free trial.</p>
+                    <a href="#" class="btn btn-primary">Register Now</a>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Managers create plans</h3>
+                    <p>Connect your accounts or start manually tracking your finances with our guided setup.</p>
+                    <a href="#" class="btn btn-secondary">View Demo</a>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Customers apply</h3>
+                    <p>Monitor your spending, savings growth, and visualize your financial progress over time.</p>
+                    <a href="#" class="btn btn-secondary">Learn More</a>
+                </div>
+
+           
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta section">
+        <div class="container cta-container">
+            <h2>Ready to Transform Your Financial Future?</h2>
+            <p>Join thousands of users who have taken control of their finances with WealthWise. Start your free trial today — no credit card required.</p>
+            
+            <div>
+                <a routerLink="/register" class="btn btn-white">Start First Plan</a>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="footer-logo-icon">F</span>
+                        FinanceHub
+                    </div>
+                    <p>Your complete solution for personal and business financial management, helping you achieve your financial goals with confidence.</p>
+                    <div class="social-links">
+                        <a href="#">f</a>
+                        <a href="#">t</a>
+                        <a href="#">in</a>
+                        <a href="#">ig</a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            104 Finance Street, Navi Mumabai, 400071
+                        </li>
+                        <li class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            +919392974587
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 WealthWise. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+   

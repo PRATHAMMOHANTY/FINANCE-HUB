@@ -1,0 +1,26 @@
+
+<div *ngIf="isLoggedIn()">
+    <app-usernav></app-usernav>
+    <h2>Add Feedback</h2>
+    <div class="container">
+        <form [formGroup]="addform" (ngSubmit)="addFeedback()" class="form">
+            <div class="text-center">
+                <img src="assets/customer-feedback.png" alt="Feedback Icon" style="width: 70px; height: 70px; margin-bottom: 2px;">
+            </div>
+            <textarea formControlName="feedbackText" name="feedbackText" id="feedbackText" rows="10" class="form-control"></textarea>
+
+            <div *ngIf="feedbackText.invalid && feedbackText.touched">
+                <div *ngIf="feedbackText.errors?.required">
+                    <span class="error-message">Feedback is Required.</span>
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <button type="submit" [disabled]="addform.invalid" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div *ngIf="!isLoggedIn()">
+    <app-error></app-error>
+</div>

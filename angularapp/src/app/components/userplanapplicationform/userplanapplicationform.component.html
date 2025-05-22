@@ -1,0 +1,54 @@
+
+<div *ngIf="isLoggedIn()">
+  <app-usernav></app-usernav>
+  <h2 class="font-roboto">Plan Application Form</h2>
+  <div class="container mt-5 w-50">
+    <div class="card">
+      <div class="card-body">
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+          <div class="form-group">
+            <input type="number" placeholder=" " class="form-control" id="appliedAmount" required
+                   [(ngModel)]="planApplicationForm.AppliedAmount" name="appliedAmount"
+                   #appliedAmount="ngModel" (ngModelChange)="validateAmount()">
+            <label for="appliedAmount">Applied Amount<span style="color: rgb(234, 27, 27)(81, 60, 60);">*</span></label>
+            <div id="error" *ngIf="appliedAmount.invalid && (appliedAmount.touched || appliedAmount.dirty) || amountError"
+                 class="error-message">
+              <p class="text-danger">Applied Amount is required {{ amountError }}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="date" placeholder=" " class="form-control" id="applicationDate" required
+                   [(ngModel)]="planApplicationForm.ApplicationDate" name="applicationDate" #applicationDate="ngModel"
+                   [min]="minDate">
+            <label for="applicationDate">Application Date<span style="color: red;">*</span></label>
+            <div id="error" *ngIf="applicationDate.invalid && (applicationDate.touched || applicationDate.dirty)"
+                 class="error-message">
+              <p class="text-danger">Application Date is required</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" id="remarks" placeholder=" " rows="3" required
+                      [(ngModel)]="planApplicationForm.Remarks" name="remarks" #remarks="ngModel"></textarea>
+            <label for="remarks">Remarks<span style="color: red;">*</span></label>
+            <div id="error" *ngIf="remarks.invalid && (remarks.touched || remarks.dirty)"
+                 class="error-message">
+              <p class="text-danger">Remarks is required</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="file" class="form-control" id="proof" name="proof" (change)="onFileChange($event)" required>
+            <label for="proof">Proof Document<span style="color: red;">*</span></label>
+            <small class="form-text text-muted">Only .jpeg, .jpg, .png files are allowed</small>
+            <div id="error" *ngIf="fileError || !selectedFile" class="error-message">
+              <p class="text-danger">{{ fileError ? fileError : 'Proof Document is required' }}</p>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="form.invalid || amountError || fileError">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!isLoggedIn()">
+  <app-error></app-error>
+</div>

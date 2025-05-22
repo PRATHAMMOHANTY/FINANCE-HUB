@@ -1,0 +1,82 @@
+
+<div *ngIf="isLoggedIn()">
+    <app-managernav></app-managernav>
+    
+    <div class="background-wrapper">
+        <div class="container">
+            <h1>Create New Savings Plan</h1>
+            <form [formGroup]="form" (ngSubmit)="addSavingsPlan()">
+
+                <div class="form-group">
+                    <input id="name" formControlName="name" required placeholder="Plan Name">
+                    <label for="name">Plan Name</label>
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                        <div *ngIf="name.errors?.required" class="error-message">Plan Name is required.</div>
+                        <div *ngIf="name.errors?.pattern" class="error-message">Plan Name must contain only letters.</div>
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <input id="goalAmount" formControlName="goalAmount" type="number" required min="1000" max="10000000" placeholder="Goal Amount">
+                    <label for="goalAmount">Goal Amount</label>
+                    <div *ngIf="goalAmount.invalid && (goalAmount.dirty || goalAmount.touched)">
+                        <div *ngIf="goalAmount.errors?.required" class="error-message">Goal Amount is required.</div>
+                        <div *ngIf="goalAmount.errors?.min" class="error-message">Goal Amount must be at least 1,000.</div>
+                        <div *ngIf="goalAmount.errors?.max" class="error-message">Goal Amount cannot exceed 10,000,000.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input id="timeFrame" formControlName="timeFrame" type="number" required min="1" max="50" placeholder="Time Frame (years)">
+                    <label for="timeFrame">Time Frame (years)</label>
+                    <div *ngIf="timeFrame.invalid && (timeFrame.dirty || timeFrame.touched)">
+                        <div *ngIf="timeFrame.errors?.required" class="error-message">Time Frame is required.</div>
+                        <div *ngIf="timeFrame.errors?.min" class="error-message">Time Frame must be at least 1 year.</div>
+                        <div *ngIf="timeFrame.errors?.max" class="error-message">Time Frame cannot exceed 50 years.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <select id="riskLevel" formControlName="riskLevel" required>
+                        <option value="" disabled selected hidden>Risk Level</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                    <div *ngIf="riskLevel.invalid && (riskLevel.dirty || riskLevel.touched)">
+                        <div *ngIf="riskLevel.errors?.required" class="error-message">Risk Level is required.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <select id="status" formControlName="status" required>
+                        <option value="" disabled selected hidden>Status</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                    <div *ngIf="status.invalid && (status.dirty || status.touched)">
+                        <div *ngIf="status.errors?.required" class="error-message">Status is required.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <textarea id="description" formControlName="description" required placeholder="Description"></textarea>
+                    <label for="description">Description</label>
+                    <div *ngIf="description.invalid && (description.dirty || description.touched)">
+                        <div *ngIf="description.errors?.required" class="error-message">Description is required.</div>
+                    </div>
+                </div>
+
+                <button type="submit" [disabled]="form.invalid">Create Savings Plan</button>
+            </form>
+
+            <div *ngIf="showMessage" class="showMessage">
+                <p>Savings plan successfully added!</p>
+                <button (click)="onOkClick()">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="!isLoggedIn()">
+    <app-error></app-error>
+</div>

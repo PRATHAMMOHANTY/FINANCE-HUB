@@ -1,0 +1,394 @@
+/* Horizontal Dashboard Navigation Styles */
+.dashboard-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #f8f9fa, #ffffff);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  padding: 0 30px;
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* Logo Section */
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #4f46e5;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
+
+
+.logo-link:hover {
+  transform: scale(1.05);
+}
+
+
+
+.logo span {
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  color: #3a4559;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  position: relative;
+  border-radius: 6px;
+}
+
+.nav-item:hover {
+  color: #2c4bcc;
+  background-color: rgba(44, 75, 204, 0.05);
+}
+
+.nav-item i {
+  margin-right: 8px;
+  font-size: 16px;
+  color: #64748b;
+  transition: color 0.3s ease;
+}
+
+.nav-item:hover i {
+  color: #2c4bcc;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  width: 0;
+  height: 2px;
+  background-color: #2c4bcc;
+  transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+  width: 70%;
+}
+
+/* Dropdown Menu */
+.nav-dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  cursor: pointer;
+}
+
+.dropdown-icon {
+  margin-left: 5px;
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.nav-dropdown:hover .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+.dropdown-content {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  background-color: white;
+  min-width: 220px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  overflow: hidden;
+  top: 45px;
+  left: -10px;
+  transform: translateY(15px);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.dropdown-content a {
+  color: #3a4559;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid #f1f5f9;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #f8f9fa;
+  color: #2c4bcc;
+  padding-left: 20px;
+}
+
+.nav-dropdown:hover .dropdown-content {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* User Section */
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #3a4559;
+}
+
+.user-role {
+  font-size: 12px;
+  color: #2c4bcc;
+  font-weight: 500;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(to right, #ef4444, #f87171);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(239, 68, 68, 0.2);
+}
+
+.logout-btn:hover {
+  background: linear-gradient(to right, #dc2626, #ef4444);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(239, 68, 68, 0.3);
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(239, 68, 68, 0.3);
+}
+
+.logout-btn i {
+  font-size: 16px;
+}
+
+/* Active Link Styles */
+.nav-item.active,
+.nav-item.router-link-active {
+  color: #2c4bcc;
+  background-color: rgba(44, 75, 204, 0.1);
+}
+
+.nav-item.active i,
+.nav-item.router-link-active i {
+  color: #2c4bcc;
+}
+
+.nav-item.active::after,
+.nav-item.router-link-active::after {
+  width: 70%;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .dashboard-nav {
+      padding: 0 15px;
+  }
+  
+  .nav-item {
+      padding: 8px 12px;
+      font-size: 0.9rem;
+  }
+  
+  .nav-item i {
+      margin-right: 6px;
+  }
+  
+  .user-info {
+      display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-nav {
+      position: relative;
+      flex-wrap: wrap;
+      height: auto;
+      padding: 15px;
+  }
+  
+  .logo {
+      margin-bottom: 0;
+  }
+  
+  .nav-links {
+      flex-basis: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      margin-top: 15px;
+      display: none;
+      gap: 5px;
+  }
+  
+  .nav-links.show {
+      display: flex;
+  }
+  
+  .nav-item {
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #f1f5f9;
+  }
+  
+  .nav-item::after {
+      display: none;
+  }
+  
+  .user-section {
+      margin-left: auto;
+  }
+  
+  .dropdown-content {
+      position: static;
+      width: 100%;
+      box-shadow: none;
+      border: 1px solid #f1f5f9;
+      margin-top: 5px;
+      border-radius: 6px;
+      transform: none;
+      background-color: #f8f9fa;
+  }
+  
+  .mobile-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: transparent;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-left: 10px;
+      color: #3a4559;
+      font-size: 18px;
+  }
+  
+  .mobile-toggle:hover {
+      background-color: #f8f9fa;
+      color: #2c4bcc;
+  }
+}
+
+/* Animation for mobile menu */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.nav-links.show {
+  animation: slideDown 0.3s ease forwards;
+}
+
+/* Manager-specific style overrides */
+.dashboard-nav.manager-nav {
+  background: linear-gradient(to right, #1e293b, #334155);
+}
+
+.manager-nav .logo-link {
+  color: #ffffff;
+}
+
+.manager-nav .nav-item {
+  color: #e2e8f0;
+}
+
+.manager-nav .nav-item:hover {
+  color: #f59e0b;
+  background-color: rgba(245, 158, 11, 0.1);
+}
+
+.manager-nav .nav-item::after {
+  background-color: #f59e0b;
+}
+
+.manager-nav .nav-item i {
+  color: #94a3b8;
+}
+
+.manager-nav .nav-item:hover i {
+  color: #f59e0b;
+}
+
+.manager-nav .dropdown-content {
+  background-color: #334155;
+  border: 1px solid #475569;
+}
+
+.manager-nav .dropdown-content a {
+  color: #e2e8f0;
+  border-bottom: 1px solid #475569;
+}
+
+.manager-nav .dropdown-content a:hover {
+  background-color: #475569;
+  color: #f59e0b;
+}
+
+.manager-nav .user-name {
+  color: #ffffff;
+}
+
+.manager-nav .user-role {
+  color: #f59e0b;
+}
+
+.manager-nav .dropdown-icon {
+  color: #f59e0b;
+}
